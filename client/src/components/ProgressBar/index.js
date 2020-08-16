@@ -4,7 +4,7 @@ import {Box, Typography, makeStyles} from '@material-ui/core';
 
 const useStyles = makeStyles(() => ({
   text: {
-    marginRight: 10
+    marginLeft: 10
   }
 }));
 

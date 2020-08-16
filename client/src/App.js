@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme => ({
     width: '100vw'
   },
   content: {
-    padding: 40,
+    padding: 25,
     flex: 1
   }
 }));

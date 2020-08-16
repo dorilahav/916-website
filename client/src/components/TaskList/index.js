@@ -2,10 +2,10 @@ import React from 'react';
 import Task from '../Task';
 import {Grid} from '@material-ui/core';
 
-export default ({tasks = []}) => {
+export default ({tasks = [], className = ''}) => {
   return (
-    <Grid container spacing={2}>
-      {tasks.map(task => <Task key={task._id} task={task}/>)}
+    <Grid container spacing={1} className={className}>
+      {tasks.map(task => <Task key={task.id} task={task}/>)}
     </Grid>
   )
 };
