@@ -1,6 +1,7 @@
 import React from 'react';
 import {Button, Box, Typography, makeStyles} from '@material-ui/core';
 import {Link} from 'react-router-dom';
+import {KID_NAME} from '../../constants';
 
 const useStyles = makeStyles({
   title: {
@@ -17,7 +18,7 @@ export default () => {
   return (
     <Box dir="rtl" align="center">
       <Typography variant="h1" className={classes.title}>
-        ברוכים הבאים למשימת בר המצווה של מישהו.
+        ברוכים הבאים למשימת בר המצווה של {KID_NAME}.
       </Typography>
       <Typography variant="h2">
         המטרה שלכם היא להציל את המדינה, תעשו כל שביכולתכם להצליח במשימה החשובה הזו!

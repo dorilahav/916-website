@@ -1,0 +1,1 @@
+export const KID_NAME = 'רתם';
