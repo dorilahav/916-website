@@ -14,7 +14,7 @@ export default ({value, maxValue, color, category}) => {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-      setProgress((value / maxValue) * 100);
+    setProgress(Math.round((value / maxValue) * 100));
   }, []);
 
   return (
