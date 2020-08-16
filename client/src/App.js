@@ -1,7 +1,7 @@
 import React from 'react';
 import {Box, makeStyles} from '@material-ui/core';
 import Navbar from './components/Navbar';
-import Pages from './Pages';
+import Pages from './pages';
 
 const useStyles = makeStyles(theme => ({
   root: {

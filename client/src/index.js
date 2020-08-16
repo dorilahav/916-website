@@ -1,7 +1,7 @@
 import './index.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Theme from './Theme';
+import Theme from './theme';
 import App from './App';
 import {CssBaseline} from '@material-ui/core';
 
