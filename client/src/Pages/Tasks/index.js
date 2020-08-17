@@ -1,7 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useMemo} from 'react';
 import {makeStyles} from '@material-ui/core';
 import Progress from './Progress';
 import TaskList from '../../components/TaskList';
+import Loadable from '../../components/Loadable';
 
 const defaultTasks = [
   {
@@ -71,7 +72,7 @@ export default () => {
   const classes = useStyles();
 
   const [tasks, setTasks] = useState(defaultTasks);
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState(null);
 
   const regenerateCategories = () => {
     const categories = tasks.reduce((categories, task) => {
@@ -96,14 +97,16 @@ export default () => {
     setCategories(categories);
   };
 
+  const isLoading = useMemo(() => categories === null, [categories]);
+
   useEffect(() => {
-    regenerateCategories();
+    setTimeout(() => regenerateCategories(), 2000);
   }, [tasks]);
 
   return (
-    <>
+    <Loadable loading={isLoading}>
       <Progress categories={categories}/>
       <TaskList tasks={tasks} className={classes.tasks}/>
-    </>
+    </Loadable>
   )
 };
