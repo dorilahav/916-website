@@ -26,7 +26,7 @@ export default ({progress, color}) => {
             alignItems="center"
             justifyContent="center"
         >
-            <Typography variant="caption" component="div" className={classes.text}>{progress}%</Typography>
+            <Typography variant="subtitle1" component="div" className={classes.text}>{progress}%</Typography>
         </Box>
       </Box>
   );
