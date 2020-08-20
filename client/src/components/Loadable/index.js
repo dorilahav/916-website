@@ -6,7 +6,7 @@ const Loading = () => (
     <CircularProgress color="secondary"/>
   </Box>
 );
-
+  
 export default ({loading, children}) => (
   <>
     {loading ?
