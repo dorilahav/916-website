@@ -1,7 +1,7 @@
 import React from 'react';
 import {Box, makeStyles} from '@material-ui/core';
 import Navbar from './components/Navbar';
-import Pages from './pages';
+import Routes from './routes';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -21,7 +21,7 @@ export default () => {
     <Box display="flex" flexDirection="column" className={classes.root}>
       <Navbar/>
       <Box className={classes.content}>
-        <Pages/>
+        <Routes/>
       </Box>
     </Box>
   )
