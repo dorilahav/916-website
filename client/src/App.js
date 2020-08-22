@@ -10,7 +10,6 @@ const useStyles = makeStyles(theme => ({
   },
   content: {
     padding: 25,
-    flex: 1
   }
 }));
 
@@ -20,7 +19,7 @@ export default () => {
   return (
     <Box display="flex" flexDirection="column" className={classes.root}>
       <Navbar/>
-      <Box className={classes.content}>
+      <Box className={classes.content} display="flex" flexDirection="column" overflow="auto" flex="1">
         <Routes/>
       </Box>
     </Box>

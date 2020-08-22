@@ -9,7 +9,8 @@ import {CATEGORIES_INFO} from '../../constants';
 
 const useStyles = makeStyles({
   tasks: {
-    padding: 25
+    padding: '0 25px',
+    overflow: 'auto'
   }
 });
 
@@ -31,10 +32,8 @@ export default () => {
     taskController.fetchAll()
       .then(tasks => {
         setTasks(tasks)
-
-        return tasks;
+        updateCategories(tasks)
       })
-      .then(tasks => updateCategories(tasks))
       .then(() => setLoading(false));
   };
 

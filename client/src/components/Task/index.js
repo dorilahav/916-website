@@ -1,9 +1,14 @@
 import React from 'react';
-import {Grid, Card, CardContent, Typography, makeStyles} from '@material-ui/core';
+import {Grid, Card, CardContent, Divider, Typography, makeStyles} from '@material-ui/core';
 
 const useStyles = makeStyles({
   card: {
-    animation: '$enter 500ms'
+    animation: '$enter 500ms',
+    cursor: 'default',
+    transition: 'transform 400ms ease',
+    '&:hover': {
+      transform: 'scale(1.05)'
+    }
   },
   '@keyframes enter': {
     '0%': {
@@ -14,6 +19,10 @@ const useStyles = makeStyles({
       opacity: 1,
       transform: 'scale(1)'
     }
+  },
+  divider: {
+    backgroundColor: 'rgba(255, 255, 255, 0.3)',
+    margin: '3px 0'
   }
 });
 
@@ -21,11 +30,12 @@ export default ({task}) => {
   const classes = useStyles();
 
   return (
-    <Grid item xs={12} sm={6} md={6} lg={4} xl={2}>
+    <Grid item xs={12} sm={6} md={6} lg={4} xl={3}>
       <Card className={classes.card}>
         <CardContent>
           <Typography variant="h4">{task.title}</Typography>
-          <Typography variant="body1">{task.description}</Typography>
+          <Divider classes={{root: classes.divider}} />
+          <Typography variant="h6">{task.description}</Typography>
         </CardContent>
       </Card>
     </Grid>
