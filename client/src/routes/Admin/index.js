@@ -26,7 +26,7 @@ export default () => {
 
   return (
     <Loadable loading={isLoading}>
-      <TaskList tasks={tasks} className={classes.tasks}/>
+      <TaskList tasks={tasks} className={classes.tasks} admin/>
     </Loadable>
   )
 };
