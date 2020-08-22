@@ -5,7 +5,7 @@ import ProgressBar from '../../../components/ProgressBar';
 export default ({categories}) => (
   <Box display="flex" flex="1" justifyContent="space-around">
     {categories.map(category => (
-      <ProgressBar key={category.id} value={category.value} maxValue={category.maxValue} color={category.color} category={category.name}/>
+      <ProgressBar key={category.id} value={category.points} maxValue={category.maxPoints} color={category.color} category={category.name}/>
     ))}
   </Box>
 );

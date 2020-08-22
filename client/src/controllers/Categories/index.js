@@ -8,7 +8,7 @@ const getNewEmptyCategoriesObject = () =>
       Object.assign(categories, {[category]: {points: START_POINTS, maxPoints: 0}}), {});
 
 export default class CategoryController {
-  getCategoriesWithPoints (tasks) {
+  getCategoriesPoints (tasks) {
     return tasks.reduce((pointsPerCategory, task) => {
       Object.entries(task.points).forEach(([category, points]) => {
         pointsPerCategory[category].maxPoints += points;
@@ -20,5 +20,10 @@ export default class CategoryController {
 
       return pointsPerCategory;
     }, getNewEmptyCategoriesObject());
+  }
+
+  addPointsToCategories (categories, categoriesPoints) {
+    return categories.reduce((categories, category) =>
+      ([...categories, {...category, ...categoriesPoints[category.id]}]), []);
   }
 }

@@ -5,6 +5,7 @@ import TaskList from '../../components/TaskList';
 import Loadable from '../../components/Loadable';
 import TaskController from '../../controllers/Tasks';
 import CategoryController from '../../controllers/Categories';
+import {CATEGORIES_INFO} from '../../constants';
 
 const useStyles = makeStyles({
   tasks: {
@@ -23,7 +24,9 @@ export default () => {
   const categoryController = useMemo(() => new CategoryController(), []);
  
   const regenerateCategories = (tasks) => {
-    setCategories(categoryController.getCategoriesWithPoints(tasks));
+    const categoriesPoints = categoryController.getCategoriesPoints(tasks);
+
+    setCategories(categoryController.addPointsToCategories(CATEGORIES_INFO, categoriesPoints));
   };
 
   const initialize = () => {

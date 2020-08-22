@@ -37,25 +37,25 @@ export const TASKS = [
   }
 ];
 
-export const CATEGORIES = [
+export const CATEGORIES_INFO = [
   {
-    id: '1',
+    id: TaskCategory.FIGHTING,
     name: 'לחימה',
-    color: 'red'
+    color: '#EF5350' // red
   },
   {
-    id: '2',
+    id: TaskCategory.CREATIVE_THINKING,
     name: 'חשיבה יצירתית',
-    color: 'blue'
+    color: '#42A5F5' // blue
   },
   {
-    id: '3',
+    id: TaskCategory.STRATEGY,
     name: 'אסטרטגיה',
-    color: 'lime'
+    color: '#66BB6A' // green
   },
   {
-    id: '4',
+    id: TaskCategory.PROBLEM_SOLVING,
     name: 'פתרון בעיות',
-    color: 'yellow'
+    color: '#FFEE58' // yellow
   }
 ];
