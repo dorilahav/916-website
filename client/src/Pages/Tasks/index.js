@@ -23,10 +23,8 @@ export default () => {
   const taskController = useMemo(() => new TaskController(), []);
   const categoryController = useMemo(() => new CategoryController(), []);
  
-  const regenerateCategories = (tasks) => {
-    const categoriesPoints = categoryController.getCategoriesPoints(tasks);
-
-    setCategories(categoryController.addPointsToCategories(CATEGORIES_INFO, categoriesPoints));
+  const updateCategories = (tasks) => {
+    setCategories(categoryController.getCategoriesWithPoints(tasks));
   };
 
   const initialize = () => {
@@ -36,7 +34,7 @@ export default () => {
 
         return tasks;
       })
-      .then(tasks => regenerateCategories(tasks))
+      .then(tasks => updateCategories(tasks))
       .then(() => setLoading(false));
   };
 
