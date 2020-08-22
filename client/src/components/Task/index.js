@@ -4,11 +4,7 @@ import {Grid, Card, CardContent, Divider, Typography, makeStyles} from '@materia
 const useStyles = makeStyles({
   card: {
     animation: '$enter 500ms',
-    cursor: 'default',
-    transition: 'transform 400ms ease',
-    '&:hover': {
-      transform: 'scale(1.05)'
-    }
+    cursor: 'default'
   },
   '@keyframes enter': {
     '0%': {

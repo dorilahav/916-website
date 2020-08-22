@@ -35,19 +35,19 @@ export const TASKS = [
   {
     id: '0',
     title: 'לפענח גלגל צופן',
-    description: LOREM_IPSUM.slice(0, 638),
+    description: LOREM_IPSUM.slice(0, 100),
     points: {
       [TaskCategory.CREATIVE_THINKING]: 10,
       [TaskCategory.FIGHTING]: 5,
       [TaskCategory.PROBLEM_SOLVING]: 10,
       [TaskCategory.STRATEGY]: 10
     },
-    status: TaskStatus.COMPLETED
+    status: TaskStatus.PENDING
   },
   {
     id: '1',
     title: 'הגובה קובע',
-    description: LOREM_IPSUM.slice(0, 638),
+    description: 'בדיקה',
     points: {
       [TaskCategory.STRATEGY]: 20,
       [TaskCategory.PROBLEM_SOLVING]: 5
