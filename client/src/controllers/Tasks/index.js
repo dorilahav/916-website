@@ -4,6 +4,9 @@ import {LOREM_IPSUM} from '../../constants';
 
 const CIPHER_TASK_ID = '0';
 
+const convertToCipherText = text =>
+  LOREM_IPSUM.slice(0, text.length);
+
 export default class TaskController {
   fetchAll() {
     return new Promise((resolve) => {
@@ -23,10 +26,6 @@ export default class TaskController {
     return this.getById(tasks, CIPHER_TASK_ID).status === TaskStatus.COMPLETED;
   }
 
-  convertToCipherText(text) {
-    return LOREM_IPSUM.slice(0, text.length);
-  }
-
   getCipheredTasks(tasks) {
     return tasks.map(({title, description, ...task}) => {
       if (task.id === CIPHER_TASK_ID) {
@@ -34,19 +33,20 @@ export default class TaskController {
       }
 
       return {
-        title: this.convertToCipherText(title),
-        description: this.convertToCipherText(description),
+        title: convertToCipherText(title),
+        description: convertToCipherText(description),
         ...task
       };
     });
   }
 
-  formatTasks(tasks) {
+  enableCipherTaskLogic(tasks) {
     return this.isCipherTaskCompleted(tasks) ? tasks : this.getCipheredTasks(tasks);
   }
 
   getUnlockedTasks(tasks) {
-    return this.formatTasks(tasks).filter(task => task.required === undefined || this.doesTaskMeetRequirements(task, tasks));
+    return this.enableCipherTaskLogic(tasks)
+      .filter(task => task.required === undefined || this.doesTaskMeetRequirements(task, tasks));
   }
 
   filterCompletedTasks(tasks) {
