@@ -25,7 +25,7 @@ export default ({progress, color}) => {
 
   return (
     <Box className={classes.root} position="relative" display="inline-flex">
-      <CircularProgress variant="static" classes={{root: classes.progressRoot, circle: classes.progressCircle}} value={progress} />
+      <CircularProgress variant="static" classes={{root: classes.progressRoot, circle: classes.progressCircle}} value={progress} size="60px" />
       <Box
         top={0}
         left={0}
@@ -36,7 +36,7 @@ export default ({progress, color}) => {
         alignItems="center"
         justifyContent="center"
       >
-        <Typography variant="subtitle1" component="div" className={classes.text}>{progress}%</Typography>
+        <Typography variant="h5" component="div" className={classes.text}>{progress}%</Typography>
       </Box>
     </Box>
   );

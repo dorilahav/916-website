@@ -26,12 +26,12 @@ export default ({task}) => {
   const classes = useStyles();
 
   return (
-    <Grid item xs={12} sm={6} md={6} lg={4} xl={3}>
+    <Grid item xs={12} sm={12} md={12} lg={4} xl={3}>
       <Card className={classes.card}>
         <CardContent>
-          <Typography variant="h4">{task.title}</Typography>
+          <Typography variant="h3">{task.title}</Typography>
           <Divider classes={{root: classes.divider}} />
-          <Typography variant="h6">{task.description}</Typography>
+          <Typography variant="h5">{task.description}</Typography>
         </CardContent>
       </Card>
     </Grid>

@@ -19,7 +19,7 @@ export default ({value, maxValue, color, category}) => {
 
   return (
     <Box display="flex" alignItems="center" justifyContent="center" flex="1">
-      <Typography variant="h5" className={classes.text}>{category}</Typography>
+      <Typography variant="h4" className={classes.text}>{category}</Typography>
       <LabeledProgress progress={progress} color={color}/>
     </Box>
   );
