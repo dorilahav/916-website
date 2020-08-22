@@ -1,3 +1,5 @@
+import {TaskCategory, TaskStatus} from '../../server/src/api/tasks/enums';
+
 export const KID_NAME = 'רתם';
 
 export const TASKS = [
@@ -6,32 +8,32 @@ export const TASKS = [
     title: 'שהטוב ביותר ינצח',
     description: '',
     points: {
-      1: 10,
-      2: 5,
-      3: 10,
-      4: 10
+      [TaskCategory.CREATIVE_THINKING]: 10,
+      [TaskCategory.FIGHTING]: 5,
+      [TaskCategory.PROBLEM_SOLVING]: 10,
+      [TaskCategory.STRATEGY]: 10
     },
-    status: 1
+    status: TaskStatus.COMPLETED
   },
   {
     id: '1',
     title: 'Task 2',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque semper elit sed justo bibendum, et convallis tellus semper. Donec vel euismod nisi. Curabitur mattis lectus eu ultrices molestie. Vestibulum sem erat, dapibus mollis diam id, sagittis fermentum risus. Ut sagittis convallis nibh in facilisis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin sagittis ullamcorper neque. Integer suscipit eget nulla et ultrices. Integer nec ligula facilisis, iaculis diam quis, rutrum est. Nulla purus augue, commodo ac libero in, pellentesque consequat eros. Aliquam erat volutpat. Duis sed turpis metus. Nunc interdum nisi eu mi molestie auctor. Suspendisse potenti. Donec.',
     points: {
-      4: 20,
-      3: 5
+      [TaskCategory.STRATEGY]: 20,
+      [TaskCategory.PROBLEM_SOLVING]: 5
     },
-    status: 0
+    status: TaskStatus.COMPLETE
   },
   {
     id: '2',
     title: 'Task 3',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque semper elit sed justo bibendum, et convallis tellus semper. Donec vel euismod nisi. Curabitur mattis lectus eu ultrices molestie. Vestibulum sem erat, dapibus mollis diam id, sagittis fermentum risus. Ut sagittis convallis nibh in facilisis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin sagittis ullamcorper neque. Integer suscipit eget nulla et ultrices. Integer nec ligula facilisis, iaculis diam quis, rutrum est. Nulla purus augue, commodo ac libero in, pellentesque consequat eros. Aliquam erat volutpat. Duis sed turpis metus. Nunc interdum nisi eu mi molestie auctor. Suspendisse potenti. Donec.',
     points: {
-      1: 20,
-      2: 40
+      [TaskCategory.STRATEGY]: 20,
+      [TaskCategory.FIGHTING]: 40
     },
-    status: 0
+    status: TaskStatus.PENDING
   }
 ];
 
