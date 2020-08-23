@@ -62,7 +62,7 @@ export const TASKS = [
       [TaskCategory.STRATEGY]: 20,
       [TaskCategory.FIGHTING]: 40
     },
-    required: [
+    requiredTasks: [
       '1'
     ],
     status: TaskStatus.PENDING
@@ -75,7 +75,7 @@ export const TASKS = [
       [TaskCategory.STRATEGY]: 20,
       [TaskCategory.FIGHTING]: 40
     },
-    required: [
+    requiredTasks: [
       '2'
     ],
     status: TaskStatus.PENDING
@@ -88,7 +88,7 @@ export const TASKS = [
       [TaskCategory.STRATEGY]: 20,
       [TaskCategory.FIGHTING]: 40
     },
-    required: [
+    requiredTasks: [
       '3'
     ],
     status: TaskStatus.PENDING
@@ -111,7 +111,7 @@ export const TASKS = [
       [TaskCategory.STRATEGY]: 20,
       [TaskCategory.FIGHTING]: 40
     },
-    required: [
+    requiredTasks: [
       '5'
     ],
     status: TaskStatus.PENDING
@@ -124,7 +124,7 @@ export const TASKS = [
       [TaskCategory.STRATEGY]: 20,
       [TaskCategory.FIGHTING]: 40
     },
-    required: [
+    requiredTasks: [
       '6'
     ],
     status: TaskStatus.PENDING
@@ -137,7 +137,7 @@ export const TASKS = [
       [TaskCategory.STRATEGY]: 20,
       [TaskCategory.FIGHTING]: 40
     },
-    required: [
+    requiredTasks: [
       '7'
     ],
     status: TaskStatus.PENDING
@@ -160,7 +160,7 @@ export const TASKS = [
       [TaskCategory.STRATEGY]: 20,
       [TaskCategory.FIGHTING]: 40
     },
-    required: [
+    requiredTasks: [
       '9'
     ],
     status: TaskStatus.PENDING
@@ -173,7 +173,7 @@ export const TASKS = [
       [TaskCategory.STRATEGY]: 20,
       [TaskCategory.FIGHTING]: 40
     },
-    required: [
+    requiredTasks: [
       '10'
     ],
     status: TaskStatus.PENDING
@@ -186,7 +186,7 @@ export const TASKS = [
       [TaskCategory.STRATEGY]: 20,
       [TaskCategory.FIGHTING]: 40
     },
-    required: [
+    requiredTasks: [
       '11'
     ],
     status: TaskStatus.PENDING
@@ -199,7 +199,7 @@ export const TASKS = [
       [TaskCategory.STRATEGY]: 20,
       [TaskCategory.FIGHTING]: 40
     },
-    required: [
+    requiredTasks: [
       '9'
     ],
     status: TaskStatus.PENDING
@@ -213,7 +213,7 @@ export const TASKS = [
       [TaskCategory.STRATEGY]: 20,
       [TaskCategory.FIGHTING]: 40
     },
-    required: [
+    requiredTasks: [
       '13'
     ],
     status: TaskStatus.PENDING

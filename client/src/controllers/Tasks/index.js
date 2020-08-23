@@ -19,7 +19,7 @@ export default class TaskController {
   }
 
   doesTaskMeetRequirements(task, tasks) {
-    return task.required.every(taskId => this.getById(tasks, taskId).status === TaskStatus.COMPLETED)
+    return task.requiredTasks.every(taskId => this.getById(tasks, taskId).status === TaskStatus.COMPLETED)
   }
 
   isCipherTaskCompleted(tasks) {
@@ -46,7 +46,7 @@ export default class TaskController {
 
   getUnlockedTasks(tasks) {
     return this.enableCipherTaskLogic(tasks)
-      .filter(task => task.required === undefined || this.doesTaskMeetRequirements(task, tasks));
+      .filter(task => task.requiredTasks === undefined || this.doesTaskMeetRequirements(task, tasks));
   }
 
   filterCompletedTasks(tasks) {
