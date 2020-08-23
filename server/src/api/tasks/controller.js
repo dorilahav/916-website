@@ -20,3 +20,18 @@ export const create = async (req, res, next) => {
     res.status(201).send(createdTask);
   }).catch(next);
 };
+
+
+export const getOne = (req, res) => {
+  res.send(req.task);
+}
+
+export const unlock = (req, res, next) => {
+  const {task} = req;
+
+  task.unlocked = true;
+
+  return task.save()
+    .then(task => res.status(201).send(task))
+    .catch(next);
+};

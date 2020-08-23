@@ -10,9 +10,7 @@ const useStyles = makeStyles(() => ({
 
 export default ({categories}) => {
   const classes = useStyles();
-
-  console.log(categories);
-
+  
   return (
     <Box display="flex" justifyContent="space-around" className={classes.root}>
       {categories.map(category => (
