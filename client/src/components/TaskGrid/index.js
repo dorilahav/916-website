@@ -1,5 +1,5 @@
 import React, {useMemo} from 'react';
-import Task from '../Task';
+import TaskCard from '../TaskCard';
 import {Grid} from '@material-ui/core';
 import TaskController from '../../controllers/Tasks';
 
@@ -9,7 +9,7 @@ export default ({tasks = [], className = '', admin = false}) => {
 
   return (
     <Grid container spacing={2} className={className}  dir="rtl">
-      {currentTasks.map(task => <Task key={task.id} task={task}/>)}
+      {currentTasks.map(task => <TaskCard key={task.id} task={task}/>)}
     </Grid>
   )
 };

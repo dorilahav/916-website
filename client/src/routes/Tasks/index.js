@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useMemo} from 'react';
 import {makeStyles} from '@material-ui/core';
 import Progress from './Progress';
-import TaskList from '../../components/TaskList';
+import TaskGrid from '../../components/TaskGrid';
 import Loadable from '../../components/Loadable';
 import TaskController from '../../controllers/Tasks';
 import CategoryController from '../../controllers/Categories';
@@ -44,7 +44,7 @@ export default () => {
   return (
     <Loadable loading={isLoading}>
       <Progress categories={categories}/>
-      <TaskList tasks={tasks} className={classes.tasks}/>
+      <TaskGrid tasks={tasks} className={classes.tasks}/>
     </Loadable>
   )
 };

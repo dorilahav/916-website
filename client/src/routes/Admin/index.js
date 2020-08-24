@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useMemo} from 'react';
 import {makeStyles} from '@material-ui/core';
-import TaskList from '../../components/TaskList';
+import TaskGrid from '../../components/TaskGrid';
 import Loadable from '../../components/Loadable';
 import {TASKS} from '../../constants';
 
@@ -26,7 +26,7 @@ export default () => {
 
   return (
     <Loadable loading={isLoading}>
-      <TaskList tasks={tasks} className={classes.tasks} admin/>
+      <TaskGrid tasks={tasks} className={classes.tasks} admin/>
     </Loadable>
   )
 };
