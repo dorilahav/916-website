@@ -1,16 +1,16 @@
 import React from 'react';
 import {Box, CircularProgress} from '@material-ui/core';
 
-const Loading = () => (
+const Loading = ({className}) => (
   <Box display="flex" justifyContent="center">
-    <CircularProgress color="secondary"/>
+    <CircularProgress className={className} color="secondary"/>
   </Box>
 );
   
-export default ({loading, children}) => (
+export default ({loading, loadingClassName, children}) => (
   <>
     {loading ?
-      <Loading/> :
+      <Loading className={loadingClassName}/> :
       children}
   </>
 );
