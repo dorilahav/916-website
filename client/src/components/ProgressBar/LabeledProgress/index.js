@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {Typography, Box, CircularProgress, makeStyles} from '@material-ui/core';
 
 const useStyles = (color) => makeStyles({
   root: {
-    transition: 'transform 400ms ease',
+    transition: 'transform 200ms ease',
     cursor: 'default',
     '&:hover': {
       transform: 'scale(1.25)'
