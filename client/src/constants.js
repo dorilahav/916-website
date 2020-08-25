@@ -36,6 +36,12 @@ export const TASKS = [
     id: '0',
     title: 'לפענח גלגל צופן',
     description: LOREM_IPSUM.slice(0, 100),
+    items: [
+      'אני',
+      'את',
+      'אתם',
+      'אתן'
+    ],
     points: {
       [TaskCategory.CREATIVE_THINKING]: 10,
       [TaskCategory.FIGHTING]: 5,
