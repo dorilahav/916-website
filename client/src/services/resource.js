@@ -10,8 +10,8 @@ export default class ResourceService {
   #parseEntity(rawEntity) {
     rawEntity.prototype.sendAction = async (action) =>
       this.axios.post(`/${action}`)
-      .then(({data}) => data);
-  };
+        .then(({data}) => data);
+  }
 
   async getAll() {
     return await this.axios.get('/')
@@ -29,7 +29,7 @@ export default class ResourceService {
   }
 
   async deleteById(id) {
-    return await this.axios.delete('/', entity)
+    return await this.axios.delete(`/${id}`)
       .then(({data}) => data);
   }
 
