@@ -21,7 +21,8 @@ const useStyles = makeStyles(theme => ({
     margin: '3px 0'
   },
   items: {
-    color: theme.palette.grey[500]
+    color: theme.palette.grey[500],
+    marginTop: 10
   }
 }));
 
@@ -36,7 +37,8 @@ export default ({task}) => {
           <Divider classes={{root: classes.divider}} />
           <Typography variant="h5">{task.description}</Typography>
           <div className={classes.items}>
-            {task.items && task.items.map((item, index) => <Typography key={`item-${index}`} variant="h5">- {item}</Typography>)}
+            {task.items && task.items.map((item, index) =>
+              <Typography key={`item-${index}`} variant="h5">- {item}</Typography>)}
           </div>
         </CardContent>
       </Card>
