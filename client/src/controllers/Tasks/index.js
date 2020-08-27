@@ -10,13 +10,11 @@ const convertToCipherText = text =>
 
 export default class TaskController {
   constructor() {
-    this.resource = new ResourceService('/api/tasks');
+    this.resource = new ResourceService('http://localhost:3000/api/tasks');
   }
 
   fetchAll() {
-    return new Promise((resolve) => {
-      resolve(TASKS);
-    });
+    return this.resource.getAll();
   }
 
   getById(tasks, taskId) {
@@ -28,7 +26,7 @@ export default class TaskController {
   }
 
   isCipherTaskCompleted(tasks) {
-    return this.getById(tasks, CIPHER_TASK_ID).status === TaskStatus.COMPLETED;
+    return this.getById(tasks, CIPHER_TASK_ID)?.status === TaskStatus.COMPLETED;
   }
 
   getCipheredTasks(tasks) {
@@ -49,12 +47,20 @@ export default class TaskController {
     return this.isCipherTaskCompleted(tasks) ? tasks : this.getCipheredTasks(tasks);
   }
 
+  isUnlocked(task, tasks) {
+    return task.requiredTasks === undefined || task.unlocked === true || this.doesTaskMeetRequirements(task, tasks);
+  }
+
   getUnlockedTasks(tasks) {
     return this.enableCipherTaskLogic(tasks)
-      .filter(task => task.requiredTasks === undefined || this.doesTaskMeetRequirements(task, tasks));
+      .filter(task => this.isUnlocked(task, tasks));
   }
 
   filterCompletedTasks(tasks) {
     return tasks.filter(task => task.status !== TaskStatus.COMPLETED);
+  }
+
+  insert(task) {
+    return this.resource.insert(task);
   }
 }

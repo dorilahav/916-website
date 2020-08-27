@@ -31,8 +31,8 @@ export default () => {
   const initialize = () => {
     taskController.fetchAll()
       .then(tasks => {
-        setTasks(tasks)
-        updateCategories(tasks)
+        setTasks(tasks);
+        updateCategories(tasks);
       })
       .then(() => setLoading(false));
   };

@@ -1,8 +1,9 @@
-import React, {useState, useEffect, useMemo} from 'react';
-import {makeStyles} from '@material-ui/core';
+import React, {useState, useEffect, useMemo, useCallback} from 'react';
+import {Button, makeStyles} from '@material-ui/core';
 import TaskGrid from '../../components/TaskGrid';
 import Loadable from '../../components/Loadable';
 import {TASKS} from '../../constants';
+import TaskController from '../../controllers/Tasks';
 
 const useStyles = makeStyles({
   tasks: {
@@ -15,10 +16,20 @@ export default () => {
 
   const [tasks, setTasks] = useState(TASKS);
   const [isLoading, setLoading] = useState(true);
+  
+  const taskController = useMemo(() => new TaskController(), []);
 
   const initialize = () => {
     setLoading(false);
   };
+
+  const pushTasks = useCallback(() => {
+    const insertPromises = [];
+
+    TASKS.forEach(task => insertPromises.push(taskController.insert(task)));
+
+    return Promise.all(insertPromises);
+  }, []);
 
   useEffect(() => {
     initialize();
@@ -26,6 +37,7 @@ export default () => {
 
   return (
     <Loadable loading={isLoading}>
+      <Button onClick={pushTasks} disabled>Push All Tasks</Button>
       <TaskGrid tasks={tasks} className={classes.tasks} admin/>
     </Loadable>
   )
