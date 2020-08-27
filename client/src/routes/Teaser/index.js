@@ -13,7 +13,7 @@ const useStyles = makeStyles({
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
-      opacity: 0.25,
+      opacity: 0.3,
       zIndex: -1,
       position: 'absolute',
       top: -150,

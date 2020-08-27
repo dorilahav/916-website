@@ -1,7 +1,4 @@
 module.exports = {
-  target: {
-    website: true
-  },
   presets: [[
     "@babel/preset-env", {
       useBuiltIns: "entry"
