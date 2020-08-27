@@ -9,6 +9,7 @@ const useStyles = makeStyles(theme => ({
     width: '100vw'
   },
   content: {
+    padding: 25
   }
 }));
 
