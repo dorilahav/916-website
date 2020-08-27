@@ -23,8 +23,7 @@ const useStyles = makeStyles({
     fontWeight: 'bold'
   },
   space: {
-    margin: '50px 0',
-    color: 'lightblue'
+    margin: '50px 0'
   }
 });
 
