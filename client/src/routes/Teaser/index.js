@@ -20,7 +20,8 @@ const useStyles = makeStyles({
     }
   },
   title: {
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    fontSize: '8rem'
   },
   space: {
     margin: '50px 0'
@@ -48,14 +49,14 @@ export default () => {
 
   return (
     <Box height="100%" display="flex" alignItems="center" justifyContent="center">
-      <Box dir="rtl" display="flex" flexDirection="column" alignItems="center" justifyContent="space-around" height="100%" className={classes.background}>
+      <Box dir="rtl" display="flex" flexDirection="column" alignItems="center" justifyContent="space-around" height="100%" className={classes.background} width="100%">
         <Typography variant="h2">
             המטרה שלכם היא להציל את המדינה, תעשו כל שביכולתכם להצליח במשימה החשובה הזו!
           </Typography>
           <Typography variant="h1" className={classes.title}>
             אתם מוכנים??
           </Typography>
-          <Typography align="left" variant="h3" className={classes.space}>
+          <Typography align="left" variant="h1" className={classes.space}>
             {countdown}
           </Typography>
       </Box>
