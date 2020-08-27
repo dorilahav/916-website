@@ -1,7 +1,7 @@
 import React from 'react';
 import {Grid, Card, CardContent, Divider, Typography, makeStyles} from '@material-ui/core';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   card: {
     animation: '$enter 500ms',
     cursor: 'default'
@@ -19,8 +19,12 @@ const useStyles = makeStyles({
   divider: {
     backgroundColor: 'rgba(255, 255, 255, 0.3)',
     margin: '3px 0'
+  },
+  items: {
+    color: theme.palette.grey[500],
+    marginTop: 10
   }
-});
+}));
 
 export default ({task}) => {
   const classes = useStyles();
@@ -32,6 +36,10 @@ export default ({task}) => {
           <Typography variant="h3">{task.title}</Typography>
           <Divider classes={{root: classes.divider}} />
           <Typography variant="h5">{task.description}</Typography>
+          <div className={classes.items}>
+            {task.items && task.items.map((item, index) =>
+              <Typography key={`item-${index}`} variant="h5">- {item}</Typography>)}
+          </div>
         </CardContent>
       </Card>
     </Grid>

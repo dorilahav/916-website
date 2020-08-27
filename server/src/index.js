@@ -2,7 +2,8 @@ import 'dotenv/config';
 import startWebsite from './config/express';
 import connectDatabase from './config/database';
 
-connectDatabase().then(startWebsite)
+connectDatabase()
+  .then(startWebsite)
   .then((port) => {
     console.log(`Website started on port ${port}!`);
   }).catch(() => {

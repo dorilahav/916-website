@@ -1,6 +1,7 @@
 import {TASKS} from '../../constants';
-import { TaskStatus } from '../../../../server/src/api/tasks/enums';
+import {TaskStatus} from '../../../../server/src/api/tasks/enums';
 import {LOREM_IPSUM} from '../../constants';
+import ResourceService from '../../services/resource';
 
 const CIPHER_TASK_ID = '0';
 
@@ -8,6 +9,10 @@ const convertToCipherText = text =>
   LOREM_IPSUM.slice(0, text.length);
 
 export default class TaskController {
+  constructor() {
+    this.resource = new ResourceService('/api/tasks');
+  }
+
   fetchAll() {
     return new Promise((resolve) => {
       resolve(TASKS);
