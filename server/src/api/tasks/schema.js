@@ -15,7 +15,7 @@ const schema = yup.object().noUnknown().shape({
   points: pointsSchema.default({}).typeError('Invalid points object was provided'),
   status: yup.string().oneOf([...Object.values(TaskStatus)], 'Invalid status was provided').default(TaskStatus.PENDING).required('A task must have a status').typeError('Invalid status was provided'),
   requiredTasks: yup.array().of(yup.string()).notRequired().typeError('Invalid requiredTasks array was provided'),
-  unlocked: yup.boolean().default(false).typeError('Invalid unlocked state was provided')
+  unlocked: yup.boolean().typeError('Invalid unlocked state was provided')
 });
 
 export default schema;
