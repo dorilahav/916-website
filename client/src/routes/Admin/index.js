@@ -3,7 +3,6 @@ import {Button, makeStyles} from '@material-ui/core';
 import TaskGrid from '../../components/TaskGrid';
 import Loadable from '../../components/Loadable';
 import TaskDialog from '../../components/TaskDialog';
-import {TASKS} from '../../constants';
 import TaskController from '../../controllers/Tasks';
 
 const useStyles = makeStyles({
@@ -16,36 +15,44 @@ export default () => {
   const classes = useStyles();
 
   const [selectedTask, setSelectedTask] = useState(null);
-  const [tasks, setTasks] = useState(TASKS);
+  const [tasks, setTasks] = useState([]);
   const [isLoading, setLoading] = useState(true);
   
   const taskController = useMemo(() => new TaskController(), []);
 
-  const initialize = () => {
-    setLoading(false);
-  };
+  const saveTask = async (task) => {
+    await taskController.update(task);
 
-  const pushTasks = useCallback(() => {
-    const insertPromises = [];
-
-    TASKS.forEach(task => insertPromises.push(taskController.insert(task)));
-
-    return Promise.all(insertPromises);
-  }, []);
+    setSelectedTask(null);
+    initialize();
+  }
 
   const handleTaskClick = (task) => {
     setSelectedTask(task);
   }
 
+  const refetch = () =>
+    taskController.fetchAll()
+      .then(tasks => {
+        setTasks(tasks);
+      });
+
+  const initialize = () => {
+    setLoading(true);
+
+    refetch().then(() => setLoading(false));
+  };
+
   useEffect(() => {
     initialize();
+
+    setInterval(() => refetch(), 1000);
   }, []);
 
   return (
     <Loadable loading={isLoading}>
-      <Button onClick={pushTasks} disabled>Push All Tasks</Button>
       <TaskGrid tasks={tasks} className={classes.tasks} onTaskClick={handleTaskClick} admin/>
-      <TaskDialog task={selectedTask} open={selectedTask !== null} onClose={() => setSelectedTask(null)}/>
+      <TaskDialog task={selectedTask} open={selectedTask !== null} onClose={() => setSelectedTask(null)} saveTask={saveTask}/>
     </Loadable>
   )
 };

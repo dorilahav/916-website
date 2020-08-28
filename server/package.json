@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --exec babel-node src"
+    "dev": "nodemon --exec babel-node src",
+    "build": "babel src --out-dir dist",
+    "start": "node dist",
+    "scripts": "babel-node scripts/db.js"
   },
   "author": "Dori_mon",
   "license": "ISC",
@@ -16,6 +19,7 @@
     "yup": "^0.29.3"
   },
   "devDependencies": {
+    "@babel/cli": "^7.10.5",
     "@babel/core": "^7.11.1",
     "@babel/node": "^7.10.5",
     "@babel/preset-env": "^7.11.0",

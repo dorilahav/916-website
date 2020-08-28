@@ -9,7 +9,7 @@ export default ({tasks = [], className = '', onTaskClick = null, admin = false})
 
   return (
     <Grid container spacing={2} className={className}  dir="rtl">
-      {currentTasks.map(task => <TaskCard key={task.id} task={task} onClick={() => onTaskClick(task)}/>)}
+      {currentTasks.map(task => <TaskCard key={task.id} task={task} onClick={onTaskClick ? () => onTaskClick(task) : undefined}/>)}
     </Grid>
   )
 };

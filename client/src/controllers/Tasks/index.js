@@ -1,7 +1,7 @@
-import {TASKS} from '../../constants';
 import {TaskStatus} from '../../../../server/src/api/tasks/enums';
 import {LOREM_IPSUM} from '../../constants';
 import ResourceService from '../../services/resource';
+import {BASE_API_URL} from '../../constants';
 
 const CIPHER_TASK_ID = '0';
 
@@ -10,7 +10,7 @@ const convertToCipherText = text =>
 
 export default class TaskController {
   constructor() {
-    this.resource = new ResourceService('http://localhost:3000/api/tasks');
+    this.resource = new ResourceService(`${BASE_API_URL}/api/tasks`);
   }
 
   fetchAll() {
@@ -19,10 +19,6 @@ export default class TaskController {
 
   getById(tasks, taskId) {
     return tasks.find(({id}) => id === taskId);
-  }
-
-  doesTaskMeetRequirements(task, tasks) {
-    return task.requiredTasks.every(taskId => this.getById(tasks, taskId).status === TaskStatus.COMPLETED)
   }
 
   isCipherTaskCompleted(tasks) {
@@ -47,13 +43,12 @@ export default class TaskController {
     return this.isCipherTaskCompleted(tasks) ? tasks : this.getCipheredTasks(tasks);
   }
 
-  isUnlocked(task, tasks) {
-    return task.requiredTasks === undefined || task.unlocked === true || this.doesTaskMeetRequirements(task, tasks);
+  isUnlocked(task) {
+    return task.status === TaskStatus.UNLOCKED;
   }
 
   getUnlockedTasks(tasks) {
-    return this.enableCipherTaskLogic(tasks)
-      .filter(task => this.isUnlocked(task, tasks));
+    return this.enableCipherTaskLogic(tasks).filter(this.isUnlocked);
   }
 
   filterCompletedTasks(tasks) {
@@ -62,5 +57,9 @@ export default class TaskController {
 
   insert(task) {
     return this.resource.insert(task);
+  }
+
+  update(task) {
+    return this.resource.replace(task.id, task);
   }
 }

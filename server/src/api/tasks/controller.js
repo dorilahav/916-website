@@ -29,12 +29,13 @@ export const getOne = (req, res) => {
   res.send(req.task);
 }
 
-export const unlock = (req, res, next) => {
-  const {task} = req;
+export const replace = async (req, res, next) => {
+  let oldTask = req.task;
+  const newTask = req.body;
 
-  task.unlocked = true;
-
-  return task.save()
-    .then(task => res.status(201).send(task))
+  Task.replaceOne({id: oldTask.id}, newTask)
+    .then(() => {
+      res.status(201).send(newTask);
+    })
     .catch(next);
-};
+}

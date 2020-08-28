@@ -15,7 +15,10 @@ const schema = new Schema({
     required: true
   },
   points: {
-    type: Object,
+    type: Object
+  },
+  items: {
+    type: Array,
     required: false
   },
   status: {
@@ -24,14 +27,6 @@ const schema = new Schema({
     required: true,
     default: TaskStatus.PENDING
   },
-  requiredTasks: {
-    type: Array,
-    required: true
-  },
-  unlocked: {
-    type: Boolean,
-    default: false
-  }
 });
 
 export default model('Task', schema, 'tasks');

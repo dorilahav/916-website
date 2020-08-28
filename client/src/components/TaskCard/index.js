@@ -18,7 +18,6 @@ const useStyles = makeStyles(theme => ({
     }
   },
   items: {
-    color: theme.palette.grey[500],
     marginTop: 10
   }
 }));

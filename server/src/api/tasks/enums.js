@@ -1,5 +1,6 @@
 export const TaskStatus = Object.freeze({
-    PENDING: 'pending',
+    LOCKED: 'locked',
+    UNLOCKED: 'unlocked',
     COMPLETED: 'completed'
 });
 

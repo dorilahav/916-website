@@ -6,12 +6,20 @@ const START_POINTS = 0;
 const getNewEmptyCategoriesObject = () =>
   Object.values(TaskCategory)
     .reduce((categories, category) =>
-      Object.assign(categories, {[category]: {points: START_POINTS, maxPoints: 0}}), {});
+      Object.assign(categories, {[category]: {points: START_POINTS, maxPoints: START_POINTS}}), {});
 
 export default class CategoryController {
   getCategoriesPoints(tasks) {
     return tasks.reduce((pointsPerCategory, task) => {
+      if (!task.points) {
+        return pointsPerCategory;
+      }
+
       Object.entries(task.points).forEach(([category, points]) => {
+        if (!points) {
+          return;
+        }
+
         pointsPerCategory[category].maxPoints += points;
 
         if (task.status === TaskStatus.COMPLETED) {
@@ -23,12 +31,14 @@ export default class CategoryController {
     }, getNewEmptyCategoriesObject());
   }
 
-  addPointsToCategories(categories, categoriesPoints) {
+  addPointsToCategories(categories, categoriesPoints) {    
     return categories.reduce((categories, category) =>
       ([...categories, {...category, ...categoriesPoints[category.id]}]), []);
   }
 
   getCategoriesWithPoints(tasks) {
-    return this.addPointsToCategories(CATEGORIES_INFO, this.getCategoriesPoints(tasks));
+    const categories = Object.entries(CATEGORIES_INFO).map(([id, info]) => ({id, ...info}));
+    
+    return this.addPointsToCategories(categories, this.getCategoriesPoints(tasks));
   }
 }

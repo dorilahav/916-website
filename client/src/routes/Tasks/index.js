@@ -5,7 +5,6 @@ import TaskGrid from '../../components/TaskGrid';
 import Loadable from '../../components/Loadable';
 import TaskController from '../../controllers/Tasks';
 import CategoryController from '../../controllers/Categories';
-import {CATEGORIES_INFO} from '../../constants';
 
 const useStyles = makeStyles({
   tasks: {
@@ -28,17 +27,21 @@ export default () => {
     setCategories(categoryController.getCategoriesWithPoints(tasks));
   };
 
-  const initialize = () => {
+  const refetch = () =>
     taskController.fetchAll()
       .then(tasks => {
         setTasks(tasks);
         updateCategories(tasks);
-      })
-      .then(() => setLoading(false));
+      });
+
+  const initialize = () => {
+    refetch().then(() => setLoading(false));
   };
 
   useEffect(() => {
     initialize();
+
+    setInterval(() => refetch(), 1000);
   }, []);
 
   return (
