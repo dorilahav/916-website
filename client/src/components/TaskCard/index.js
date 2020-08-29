@@ -1,6 +1,7 @@
 import React from 'react';
 import Divider from '../Divider';
 import {Grid, Card, CardContent, Typography, makeStyles} from '@material-ui/core';
+import {TaskStatus} from '../../../../server/src/api/tasks/enums';
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -22,12 +23,20 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default ({task, onClick}) => {
+export default ({task, onClick, admin = false}) => {
   const classes = useStyles();
+
+  const getCardColor = () => {
+    if (!admin) {
+      return undefined;
+    }
+
+    return task?.status === TaskStatus.COMPLETED ? 'green' : task?.status === TaskStatus.UNLOCKED ? 'purple' : undefined;
+  };
 
   return (
     <Grid item xs={12} sm={12} md={12} lg={4} xl={3} onClick={onClick}>
-      <Card className={classes.card}>
+      <Card className={classes.card} style={{backgroundColor: getCardColor()}}>
         <CardContent>
           <Typography variant="h3">{task.title}</Typography>
           <Divider />

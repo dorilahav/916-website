@@ -44,6 +44,26 @@ const TaskDialog = ({task, open, onClose, saveTask}) => {
     });
   }
 
+  const handleUnlockSwitch = () => {
+    setUnlocked(curr => {
+      if (!curr) {
+        setCompleted(false);
+      }
+
+      return !curr;
+    })
+  }
+
+  const handleCompleteSwitch = () => {
+    setCompleted(curr => {
+      if (!curr) {
+        setUnlocked(false);
+      }
+      
+      return !curr;
+    });
+  }
+
   const updateTask = () => {
     newTask.status = completed ? TaskStatus.COMPLETED : unlocked ? TaskStatus.UNLOCKED : TaskStatus.LOCKED;
 
@@ -76,11 +96,11 @@ const TaskDialog = ({task, open, onClose, saveTask}) => {
       </Box>
       <Grid>
         <FormControlLabel
-          control={<Switch checked={unlocked} onChange={() => setUnlocked(curr => !curr)} size="medium"/>}
+          control={<Switch checked={unlocked} onChange={handleUnlockSwitch} size="medium"/>}
           label="Unlock"/>
 
         <FormControlLabel
-          control={<Switch checked={completed} onChange={() => setCompleted(curr => !curr)} size="medium"/>}
+          control={<Switch checked={completed} onChange={handleCompleteSwitch} size="medium"/>}
           label="Complete"/>
       </Grid>
 

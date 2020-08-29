@@ -26,14 +26,15 @@ export default class TaskController {
   }
 
   getCipheredTasks(tasks) {
-    return tasks.map(({title, description, ...task}) => {
+    return tasks.map(({title, description, items, ...task}) => {
       if (task.id === CIPHER_TASK_ID) {
-        return {title, description, ...task};
+        return {title, description, items, ...task};
       }
 
       return {
         title: convertToCipherText(title),
         description: convertToCipherText(description),
+        items: items ? items.map(convertToCipherText) : undefined,
         ...task
       };
     });
